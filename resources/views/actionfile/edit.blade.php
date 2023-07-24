@@ -16,13 +16,28 @@
                 <input type="file" name="file" id="file" class="form-control" value="{{$file->file}}"  multiple>
             </div>
             <div class="form-group">
-                <label for="birth_date"> File_Tags</label>
-                <input type="text" name="file_tags[]" value="{{$file->file_tags}} "  data-role="tagsinput" class="form-control">
-
+                <label for="file_tags"> File_Tags</label>
+                <multi-input>
+                <input list="languages" name="file_tags[]" value="{{$file->file_tags}}"  class="form-control" multiple>
+                <datalist id="languages">
+                <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                    <option value="C/C++">C/C++</option>
+                    <option value="PHP">PHP</option>
+                    <option value="Swift">Swift</option>
+                    <option value="Ruby">Ruby</option>
+                    <option value="Objective-C">Objective-C</option>
+                    <option value="SQL">SQL</option>
+                </datalist>
+            </multi-input>
             </div>
             
             <button type="submit" class="btn btn-primary" id="btn-update">Save</button>
             </form>
+            <script src="{{ asset('js/multi-input.js') }}"></script>
+
+
             </div>
             </div>
             
