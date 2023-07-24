@@ -17,12 +17,29 @@
     </div>
     <div class="form-group">
         <label for="file_tags"> File_Tags</label>
-        <input type="text" name="file_tags[]" value="laravel , flutter , nodejs , java "  data-role="tagsinput" class="form-control">
+        <multi-input>
+            <input list="languages" name="file_tags[]"  class="form-control" multiple>
+            <datalist id="languages">
+            <option value="JavaScript">JavaScript</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C/C++">C/C++</option>
+                <option value="PHP">PHP</option>
+                <option value="Swift">Swift</option>
+                <option value="Ruby">Ruby</option>
+                <option value="Objective-C">Objective-C</option>
+                <option value="SQL">SQL</option>
+            </datalist>
+        </multi-input>
+    
     </div>
     
     <button type="submit" class="btn btn-primary" id="btn-primary">Save</button>
   
     </form>
+    <script src="{{ asset('js/multi-input.js') }}"></script>
+
+    
     </div>
     </div>
   
