@@ -17,7 +17,6 @@
     </div>
     <div class="form-group">
         <label for="file_tags"> File_Tags</label>
-        <multi-input>
             <input list="languages" name="file_tags[]"  class="form-control" multiple>
             <datalist id="languages">
             <option value="JavaScript">JavaScript</option>
@@ -30,8 +29,6 @@
                 <option value="Objective-C">Objective-C</option>
                 <option value="SQL">SQL</option>
             </datalist>
-        </multi-input>
-    
     </div>
     
     <button type="submit" class="btn btn-primary" id="btn-primary">Save</button>
