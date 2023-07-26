@@ -22,6 +22,7 @@
   </div>
       <div class="folder-name" style="margin-right: 560px">
          <h4> {{$file->name}}</h4>
+         <p>{{$file->folder->name}}</p>
       </div>
 
       <div class="eye-icon">
