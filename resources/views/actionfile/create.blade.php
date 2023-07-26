@@ -1,6 +1,18 @@
 @extends('layouts.main')
 @section('MainContent')
 <br>
+
+   <style type="text/css">
+    .bootstrap-tagsinput .tag {
+      margin-right: 2px;
+      color: white !important;
+      background-color: #853dbb;
+      padding: 0.2rem;
+    }
+
+    
+    
+</style>
 <div class="row">
     <div class="col-12">
         <form action="{{ route('file.store',$folder_id) }}" method="POST" enctype="multipart/form-data">
@@ -17,28 +29,47 @@
     </div>
     <div class="form-group">
         <label for="file_tags"> File_Tags</label>
-            <input list="languages" name="file_tags[]"  class="form-control" multiple>
-            <datalist id="languages">
-            <option value="JavaScript">JavaScript</option>
-                <option value="Python">Python</option>
-                <option value="Java">Java</option>
-                <option value="C/C++">C/C++</option>
-                <option value="PHP">PHP</option>
-                <option value="Swift">Swift</option>
-                <option value="Ruby">Ruby</option>
-                <option value="Objective-C">Objective-C</option>
-                <option value="SQL">SQL</option>
-            </datalist>
+        <input type="text" name="file_tags[]" data-role="tagsinput"  class="form-control">
     </div>
     
     <button type="submit" class="btn btn-primary" id="btn-primary">Save</button>
   
     </form>
-    <script src="{{ asset('js/multi-input.js') }}"></script>
+
+    </div>
+    </div>
+
+
+
 
     
-    </div>
-    </div>
+
+    <script>
+        $(function () {
+          $('input')
+            .on('change', function (event) {
+              var $element = $(event.target);
+              var $container = $element.closest('.example');
+    
+              if (!$element.data('tagsinput')) return;
+    
+              var val = $element.val();
+              if (val === null) val = 'null';
+              var items = $element.tagsinput('items');
+    
+              $('code', $('pre.val', $container)).html(
+                $.isArray(val)
+                  ? JSON.stringify(val)
+                  : '"' + val.replace('"', '\\"') + '"'
+              );
+              $('code', $('pre.items', $container)).html(
+                JSON.stringify($element.tagsinput('items'))
+              );
+            })
+            .trigger('change');
+        });
+      </script>
+    
   
     @stop
     
