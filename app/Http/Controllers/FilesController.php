@@ -44,11 +44,14 @@ class FilesController extends Controller
         ]);
         
         $name = $request['name'];
-        $file_tags = implode(',', $request['file_tags']); // عشان احول المصفوفة ل سلسلة نصية
+        $file_tags = implode(', ' , $request['file_tags']); // عشان احول المصفوفة ل سلسلة نصية
+     
+
         $folder_id = $request->route('folder_id'); 
         
         if ($request->hasFile('files')) {
             foreach ($request->file('files') as $file) {
+                
                 $filePath = $file->store('public/files');
         
                 $result = File::create([
@@ -72,8 +75,7 @@ class FilesController extends Controller
      */
     public function show(File $file)
     {
-        $filePath = storage_path('public/files/' . $file->file);
-        if (File::exists($filePath)) {
+        if (File::exists($file)) {
             return view('actionfile.show', compact('file'));
         } else {
             return response('File Not Found', 404);
@@ -84,10 +86,8 @@ class FilesController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(File $file)
-    {
-        $filePath = storage_path('public/files/' . $file->name);
-    
-        if (File::exists($filePath)) {
+    {    
+        if (File::exists($file)) {
         return view('actionfile.edit',compact('file'));
         } else {
         return response('File Not Found', 404);
@@ -115,18 +115,16 @@ class FilesController extends Controller
      */
     public function destroy(File $file)
     {
-        $filePath = storage_path('public/files/' . $file->name);
-    
-        if (File::exists($filePath)) {
-                $file->delete();
-    
+        if (File::exists($file)) {
+            $file->delete();
+            Storage::delete($file->file_link);
             return redirect()->back()
                 ->with('success', 'File deleted successfully');
         } else {
             return response('File Not Found', 404);
         }
     }
-   
+
 
     public function search(Request $request)
     {
