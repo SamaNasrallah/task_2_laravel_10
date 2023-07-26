@@ -16,6 +16,13 @@
     height: 60px;
     
  }
+ .nav-tabs a{
+  color:rgb(156, 85, 155);
+  text-decoration: none;
+ }
+ .nav-tabs a:hover {
+  color: rgb(156, 85, 155);
+}
  
 
  .add-folder a {
@@ -109,3 +116,5 @@ h3{
   text-decoration: none;
   
 } 
+
+
