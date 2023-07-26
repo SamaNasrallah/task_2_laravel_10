@@ -1,6 +1,17 @@
 @extends('layouts.main')
 @section('MainContent')
 <br>
+<style type="text/css">
+    .bootstrap-tagsinput .tag {
+      margin-right: 2px;
+      color: white !important;
+      background-color: #853dbb;
+      padding: 0.2rem;
+    }
+
+    
+    
+</style>
 <div class="row">
     <div class="col-12">
         <form action="{{ route('file.update',$file->id) }}" method="POST" enctype="multipart/form-data">
@@ -13,24 +24,13 @@
 
             <div class="form-group">
                 <label for ="name">File :</label>
-                <input type="file" name="file" id="file" class="form-control" value="{{$file->file}}"  multiple>
+                <input type="file" name="file" id="file" class="form-control" value="{{$file->file}}" >
             </div>
             <div class="form-group">
                 <label for="file_tags"> File_Tags</label>
-            
-                <input list="languages" name="file_tags[]" value="{{$file->file_tags}}"  class="form-control" multiple>
-                <datalist id="languages">
-                <option value="JavaScript">JavaScript</option>
-                    <option value="Python">Python</option>
-                    <option value="Java">Java</option>
-                    <option value="C/C++">C/C++</option>
-                    <option value="PHP">PHP</option>
-                    <option value="Swift">Swift</option>
-                    <option value="Ruby">Ruby</option>
-                    <option value="Objective-C">Objective-C</option>
-                    <option value="SQL">SQL</option>
-                </datalist>
-            
+                
+                <input type="text" name="file_tags[]" value="{{$file->file_tags}}" data-role="tagsinput" class="form-control">
+
             </div>
             
             <button type="submit" class="btn btn-primary" id="btn-update">Save</button>
