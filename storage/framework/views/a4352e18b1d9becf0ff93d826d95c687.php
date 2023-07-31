@@ -22,6 +22,7 @@
   </div>
       <div class="folder-name" style="margin-right: 560px">
          <h4> <?php echo e($file->name); ?></h4>
+         <p><?php echo e($file->folder->name); ?></p>
       </div>
 
       <div class="eye-icon">
